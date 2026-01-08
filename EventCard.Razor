@@ -1,0 +1,12 @@
+<div class="card">
+    <h3>@EventName</h3>
+    <p>@EventDate.ToShortDateString()</p>
+
+    <input @bind="EventName" placeholder="Event Name" />
+    <input type="date" @bind="EventDate" />
+</div>
+
+@code {
+    [Parameter] public string EventName { get; set; } = string.Empty;
+    [Parameter] public DateTime EventDate { get; set; } = DateTime.Now;
+}
