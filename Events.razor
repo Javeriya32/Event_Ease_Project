@@ -1,0 +1,13 @@
+@page "/events"
+
+<h2>Events</h2>
+
+<EventCard EventName="Tech Conference" EventDate="@DateTime.Now" />
+
+<p>Attendees Checked In: @count</p>
+<button @onclick="Increment">Check In</button>
+
+@code {
+    int count = 0;
+    void Increment() => count++;
+}
