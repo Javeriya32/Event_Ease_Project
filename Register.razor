@@ -1,0 +1,30 @@
+@page "/register"
+@using EventEase.Models
+@inject EventEase.Services.UserState userState
+
+<h2>Register</h2>
+
+<EditForm Model="@model" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText @bind-Value="model.Name" placeholder="Name" />
+    <InputDate @bind-Value="model.Date" />
+
+    <button type="submit">Register</button>
+</EditForm>
+
+@if (userState.IsLoggedIn)
+{
+    <p>Welcome, @userState.UserName</p>
+}
+
+@code {
+    EventModel model = new();
+
+    void HandleSubmit()
+    {
+        userState.UserName = model.Name;
+        userState.IsLoggedIn = true;
+    }
+}
